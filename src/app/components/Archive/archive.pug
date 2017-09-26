@@ -1,0 +1,6 @@
+div
+  div(v-if="hasArchivedForms")
+    h2.ui.header Archived Starter Forms
+    starterForm(v-for="form in archivedForms", :key="form._id", :formId="form._id", :isArchive="true")
+  div(v-else)
+    .ui.segment You don't have any archived forms! Go finish one!

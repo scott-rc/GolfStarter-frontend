@@ -1,0 +1,22 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "toastr": true
+  },
+  "rules": {
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],  
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["_id"]
+      }
+    ]
+  },
+  "env": {
+    "jquery": true,
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  }
+}

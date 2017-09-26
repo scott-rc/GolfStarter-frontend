@@ -1,0 +1,9 @@
+.field
+  h4.ui.dividing.header Check {{ '#' + number }}
+  .ui.fields
+    .ui.field
+      label Hole
+      select.dropdown(v-model="hole", :class="isArchive ? 'disabled' : null")
+        option(value="") Check {{ '#' + number }}
+        option(v-for="n in 7") {{ n + start }}
+    timePicker(:timeKey="'check' + number + 'Time'", :formId="formId", :isArchive="isArchive")

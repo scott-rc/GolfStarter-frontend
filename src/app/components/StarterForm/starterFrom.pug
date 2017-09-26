@@ -1,0 +1,24 @@
+.ui.styled.fluid.accordion
+  .title.ui.four.column.center.aligned.stackable.grid
+    .column Group # {{ form.groupNumber }} 
+    .column Group Name: {{ form.groupName }}
+    .column Number of Players: {{ form.numberOfPlayers }}
+    .column Cart Number: {{ form.cartNumber }}
+  .content
+    .ui.divider
+    .ui.basic.segment.container
+      .ui.form
+        .ui.field
+          timePicker(label="Start Time", timeKey="startTime", :formId="formId", :isArchive="isArchive")
+        check(:number="1", timeKey="check1Time", :formId="formId", :isArchive="isArchive")
+        check(:number="2", timeKey="check2Time", :formId="formId", :isArchive="isArchive")
+        check(:number="3", timeKey="check3Time", :formId="formId", :isArchive="isArchive")
+        .ui.field
+          timePicker(label="Hole #9", timeKey="hole9Time", :formId="formId", :isArchive="isArchive")
+        check(:number="4", :start="9", timeKey="check4Time", :formId="formId", :isArchive="isArchive")
+        check(:number="5", :start="9", timeKey="check5Time", :formId="formId", :isArchive="isArchive")
+        check(:number="6", :start="9", timeKey="check6Time", :formId="formId", :isArchive="isArchive")
+        .ui.field
+          timePicker(label="End Time", timeKey="endTime", :formId="formId", :isArchive="isArchive")
+        .ui.button(v-if="!isArchive", @click="update") Update
+        .ui.button(v-if="isComplete && !isArchive", @click="archive") Archive

@@ -1,0 +1,6 @@
+div
+  div(v-if="hasActiveForms")
+    h2.ui.header Active Starter Forms
+    starterForm(v-for="form in activeForms", :key="form._id", :formId="form._id")
+  div(v-else)
+    .ui.segment You don't have any active forms! Go create one!
