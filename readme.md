@@ -11,6 +11,12 @@ Axios is how we send HTTP requests. This is how we will communicate with our bac
   * [Request Aliases](https://github.com/axios/axios#request-method-aliases)
   * [Handling Errors](https://github.com/axios/axios#handling-errors)
 
+### ES6 (JavaScript)
+
+ES stands for ECMAScript and is the specification for JavaScript. ES6 is one of the latest specifications that brings a lot of new features into JavaScript. We are going to be using a lot of these new features.
+
+[ES6 (Javascript)](https://github.com/DrkSephy/es6-cheatsheet)
+
 ### JSON
 
 JSON is the format that we use to send and receive messages from our backend.
@@ -27,6 +33,19 @@ Pug is an HTML pre-processor. It uses whitespace indentation (like Python) to de
   * [Plain Text](https://pugjs.org/language/plain-text.html)
   * [Tags](https://pugjs.org/language/tags.html)
 
+### Semantic UI
+
+Semantic UI is a CSS and JavaScript library that will allow us to have a beautiful and responsive UI. This along with Vue are your frontend bibles.
+
+* [Semantic](https://semantic-ui.com/)
+  * [Button](https://semantic-ui.com/elements/button.html)
+  * [Dropdown](https://semantic-ui.com/modules/dropdown.html)
+  * [Form](https://semantic-ui.com/collections/form.html)
+  * [Validation](https://semantic-ui.com/behaviors/form.html)
+  * [Icon](https://semantic-ui.com/elements/icon.html)
+  * [Input](https://semantic-ui.com/elements/input.html)
+  * [Segment](https://semantic-ui.com/elements/segment.html)
+
 ### Vue
 
 Vue is the core framework we are using to create this website. It allows us to create reusable components for our UI and turn our website into a single page application.
@@ -34,6 +53,7 @@ Vue is the core framework we are using to create this website. It allows us to c
 * [Vue](https://vuejs.org/v2/guide/)
   * [Vuex](https://vuex.vuejs.org/)
   * [Vue-Router](https://router.vuejs.org/)
+
 
 ## Installation
 
