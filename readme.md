@@ -54,6 +54,31 @@ Vue is the core framework we are using to create this website. It allows us to c
   * [Vuex](https://vuex.vuejs.org/)
   * [Vue-Router](https://router.vuejs.org/)
 
+## Development
+
+### IDE
+
+Visual Studio Code is my text editor of choice when developing applications with JavaScript. I highly recommend installing the ESLint and Git Lens extensions.
+
+* [Visual Studio Code](https://code.visualstudio.com/)
+  * [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+  * [Git Lens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+
+### Browser Extension
+
+I also highly recommend the LiveReload chrome extension. This will refresh the page whenever you save a file.
+
+[LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+
+### Running
+
+To begin development, open a command prompt, navigate to the root of this project, and run the command `npm run dev`
+
+Once you see
+
+> Listening for requests on port 8080.
+
+Go to [localhost:8080](http://localhost:8080) in google chrome, toggle LiveReload, and begin coding!
 
 ## Installation
 
