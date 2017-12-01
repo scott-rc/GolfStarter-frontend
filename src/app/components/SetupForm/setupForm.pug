@@ -1,18 +1,15 @@
 .ui.form
   .ui.field
     .field
-      label Group #
-      input(v-model="model.groupNumber")
-  .ui.field
-    .field
       label Group Name
-      input(v-model="model.groupName")
+      input(id="groupName", v-model="model.groupName")
   .ui.field
     .field
-      label # Players
-      input(type="number", max="4", min="1", v-model="model.numberOfPlayers")
+      label Number of Players
+      input(id="numOfPlayers", type="number", max="4", min="1", v-model="model.numberOfPlayers")
   .ui.field
     .field
-      label Cart #
-      input(v-model="model.cartNumber")
-  .ui.button(@click="submit") Submit
+      label Cart Number
+      input(id="cartNum", v-model="model.cartNumber")
+  .ui.primary.submit.button(@click="submit") Submit
+  .ui.error.message

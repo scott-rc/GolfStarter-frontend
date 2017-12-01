@@ -1,4 +1,8 @@
 .ui.stackable.menu
   router-link.item(to="/") Home
-  router-link.item(to="/create-form") Create Form
   router-link.item(to="/archive") Archive
+  router-link.item(to="/create-form") Create Form
+  .right.menu
+    router-link(v-if="loggedIn", to="/account").item {{ username }}
+    router-link.item(v-if="isAdmin", to="/admin") Admin
+    a.item(v-if="loggedIn", @click="logout") Log Out

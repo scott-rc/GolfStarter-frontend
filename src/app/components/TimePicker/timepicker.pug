@@ -2,15 +2,4 @@
   label {{ label }}
   .fields
     .field
-      select.compact.dropdown(v-model="hour", name="hour", :class="isArchive ? 'disabled' : null")
-        option(value="") Hour
-        option(v-for="n in 12") {{ n }}
-    .field
-      select.compact.dropdown(v-model="min", name="min", :class="isArchive ? 'disabled' : null")
-        option(value="") Min
-        option(v-for="(_, i) in 60", :value="i") {{ i <= 9 ? '0' + i : i }}
-    .field
-      select.compact.dropdown(v-model="pmVal", @change="onPMChange", name="meridiem", :class="isArchive ? 'disabled' : null")
-        option(value="") AM / PM
-        option(value="AM") AM
-        option(value="PM") PM
+      input

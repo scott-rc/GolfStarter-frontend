@@ -1,93 +1,53 @@
-import dateUtil from '../../util/date';
-
 export default {
   name: 'TimePicker',
 
   computed: {
     date() {
-      const starterForm = this.$store.getters.Forms.find(form => form._id === this.formId);
-      const dateAsString = starterForm[this.timeKey];
+      const date = this.$store.getters.Forms.find(form => form._id === this.formId)[this.timeKey];
 
-      if (dateUtil.isValidStringDate(dateAsString)) {
-        return new Date(dateAsString);
+      if (typeof (date) === 'string') {
+        return new Date(date);
       }
 
-      return null;
+      return date;
     },
-
-    min: {
-      get() {
-        if (this.date != null) {
-          return this.date.getMinutes();
-        }
-
-        return '';
-      },
-      set(value) {
-        this.$store.commit('updateTime', {
-          id: this.formId,
-          key: this.timeKey,
-          unit: 'min',
-          isPM: this.isPM,
-          value,
-        });
-      },
-    },
-
-    hour: {
-      get() {
-        if (this.date != null) {
-          const hour = this.date.getHours();
-
-          if (hour > 12) {
-            return hour - 12;
-          }
-
-          if (hour === 0) {
-            return 12;
-          }
-
-          return hour;
-        }
-
-        return '';
-      },
-      set(value) {
-        this.$store.commit('updateTime', {
-          id: this.formId,
-          key: this.timeKey,
-          unit: 'hour',
-          isPM: this.isPM,
-          value,
-        });
-      },
-    },
-
-    isPM() {
-      return this.pmVal === 'PM';
-    },
-  },
-
-  data() {
-    return {
-      pmVal: null,
-    };
   },
 
   mounted() {
-    if (this.date != null) {
-      this.pmVal = this.date.getHours() >= 12 ? 'PM' : 'AM';
-    } else {
-      this.pmVal = '';
+    const $self = $(this.$el);
+    const $timepicker = $self.find('input');
+
+    $timepicker.timepicker({
+      noneOption: true,
+      useSelect: true,
+      forceRoundTime: true,
+      timeFormat: 'h:i A',
+      scrollDefault: 'now',
+      step: 5,
+    });
+
+    $timepicker.change(() => {
+      const value = $timepicker.timepicker('getTime');
+
+      this.$store.commit('updateTime', {
+        formId: this.formId,
+        timeKey: this.timeKey,
+        value,
+      });
+    });
+
+    const $selectPicker = $self.find('select');
+
+    if (this.isArchive) {
+      $selectPicker.addClass('disabled');
     }
 
-    $(this.$el).find('[name="meridiem"]').val(this.pmVal);
-  },
+    $selectPicker.addClass('ui dropdown');
+    $selectPicker.dropdown();
 
-  methods: {
-    onPMChange() {
-      this.hour = this.hour;
-    },
+    if (this.date != null) {
+      $timepicker.timepicker('setTime', this.date);
+    }
   },
 
   props: {

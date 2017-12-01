@@ -7,6 +7,10 @@ const getters = {
   loggedIn(state) {
     return state.user.username !== '';
   },
+
+  isAdmin(state) {
+    return state.user.isAdmin;
+  },
 };
 
 const mutations = {
@@ -15,8 +19,7 @@ const mutations = {
   },
 
   clearUser(state) {
-    state.user.username = '';
-    state.user.email = '';
+    state.user = {};
   },
 };
 
@@ -26,7 +29,7 @@ export default {
   state: {
     user: {
       username: '',
-      email: '',
+      isAdmin: false,
     },
   },
   getters,

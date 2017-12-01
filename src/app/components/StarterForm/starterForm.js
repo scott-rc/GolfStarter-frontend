@@ -14,7 +14,18 @@ export default {
 
   computed: {
     isComplete() {
-      return this.form.endTime != null && this.form.endTime.length > 0;
+      return this.form.endTime != null;
+    },
+    comment: {
+      get() {
+        return this.form.comment;
+      },
+      set(value) {
+        this.$store.commit('updateComment', {
+          id: this.form._id,
+          value,
+        });
+      },
     },
     ...mapState({
       form(state) {
@@ -24,33 +35,28 @@ export default {
   },
 
   methods: {
-    async update() {
-      await axios.put('/starter-form', this.form);
-
-      toastr.options = {
-        closeButton: false,
-        debug: false,
-        newestOnTop: false,
-        progressBar: false,
-        positionClass: 'toast-top-right',
-        preventDuplicates: false,
-        onclick: null,
-        showDuration: '300',
-        hideDuration: '1000',
-        timeOut: '5000',
-        extendedTimeOut: '1000',
-        showEasing: 'swing',
-        hideEasing: 'linear',
-        showMethod: 'fadeIn',
-        hideMethod: 'fadeOut',
-      };
-
-      toastr.success('Update Successful!', 'Starter Form');
+    async updateForm() {
+      try {
+        await axios.put('/api/starter-form', this.form);
+        toastr.success('Update Successful!');
+      } catch (e) {
+        toastr.error('Update Failed');
+      }
     },
 
-    async archive() {
-      this.$store.commit('archiveForm', this.form._id);
-      this.update();
+    async deleteForm() {
+      try {
+        await axios.patch('/api/starter-form', { id: this.formId });
+        this.$store.commit('deleteForm', this.formId);
+        toastr.success('Deleted');
+      } catch (e) {
+        toastr.error('Delete Failed');
+      }
+    },
+
+    async archiveForm() {
+      this.$store.commit('archiveForm', this.formId);
+      this.updateForm();
     },
   },
 

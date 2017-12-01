@@ -1,5 +1,3 @@
-import dateUtil from '../../util/date';
-
 /* eslint-disable no-param-reassign */
 const getters = {
   Forms(state) {
@@ -16,42 +14,20 @@ const mutations = {
     state.forms.find(form => form._id === id).active = false;
   },
 
-  updateTime(state, { id, key, value, unit, isPM }) {
-    const oldDateAsString = state.forms.find(form => form._id === id)[key];
-    const date = dateUtil.getDate(oldDateAsString);
+  updateComment(state, { id, value }) {
+    state.forms.find(form => form._id === id).comment = value;
+  },
 
-    if (value == null || value === '') {
-      state.forms.find(form => form._id === id)[key] = date.toISOString();
-      return;
-    }
-
-    if (unit === 'min') {
-      date.setMinutes(value);
-    } else {
-      let hour = parseInt(value, 10);
-
-      if (hour === 12) {
-        hour = 0;
-      }
-
-      if (isPM) {
-        hour += 12;
-      } else if (hour >= 12) {
-        hour -= 12;
-      }
-
-      if (hour >= 24) {
-        hour = 0;
-      }
-
-      date.setHours(hour);
-    }
-
-    state.forms.find(form => form._id === id)[key] = date.toISOString();
+  updateTime(state, { formId, timeKey, value }) {
+    state.forms.find(form => form._id === formId)[timeKey] = value;
   },
 
   updateCheckHole(state, { id, key, value }) {
     state.forms.find(form => form._id === id)[key] = value;
+  },
+
+  deleteForm(state, formId) {
+    state.forms = state.forms.filter(form => form._id !== formId);
   },
 
   clearForms(state) {

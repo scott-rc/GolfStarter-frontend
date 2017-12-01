@@ -1,4 +1,4 @@
-.ui.styled.fluid.accordion
+.ui.segment
   .title.ui.four.column.center.aligned.stackable.grid
     .column Group # {{ form.groupNumber }} 
     .column Group Name: {{ form.groupName }}
@@ -20,5 +20,9 @@
         check(:number="6", :start="9", timeKey="check6Time", :formId="formId", :isArchive="isArchive")
         .ui.field
           timePicker(label="End Time", timeKey="endTime", :formId="formId", :isArchive="isArchive")
-        .ui.button(v-if="!isArchive", @click="update") Update
-        .ui.button(v-if="isComplete && !isArchive", @click="archive") Archive
+        .ui.field
+          label Comments
+          textarea(v-model="comment")
+        .ui.primary.button(@click="updateForm") Update
+        .ui.button(v-if="isComplete && !isArchive", @click="archiveForm") Archive
+        .ui.red.button(@click="deleteForm") Delete

@@ -1,2 +1,2 @@
-<template lang="pug" src="./starterFrom.pug"></template>
+<template lang="pug" src="./starterForm.pug"></template>
 <script src="./starterForm.js"></script>

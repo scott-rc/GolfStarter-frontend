@@ -1,0 +1,17 @@
+.ui.middle.aligned.center.aligned.grid
+  .column
+    h2.ui.image.header
+      .content Log-in to your golf starter account
+    .ui.large.form
+      .ui.stacked.secondary.segment
+        .field
+          .ui.left.icon.input
+            i.user.icon
+            input(type="text", name="username", placeholder="Username", v-model="model.username")
+        .field
+          .ui.left.icon.input
+            i.lock.icon
+            input(type="password", name="password", placeholder="Password", v-model="model.password")
+        .ui.fluid.large.primary.submit.button(@click="login") Login
+
+      .ui.error.message

@@ -23,7 +23,7 @@ export default {
   },
 
   async mounted() {
-    const res = await axios.get('/starter-form/scott');
+    const res = await axios.get('/api/starter-form/');
     const forms = res.data;
 
     if (this.numberOfForms < forms.length) {
