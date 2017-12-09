@@ -1,27 +1,23 @@
-div(v-if="creatingUser")
-  //- todo: improve this...
-  .ui.form(v-if="inputtingUser")
-    .ui.field
-      .field
-        label Username
-        input(id="username", v-model="userModel.username")
-    .ui.segment
-      .field
-        .ui.toggle.checkbox
-          input(id="isAdmin", type="checkbox", v-model="userModel.isAdmin")
-          label Make this user an Administrator?
-    .ui.primary.button(@click="createUser") Submit
-    //- fixme: not working...
-    .ui.red.button(@click="finishCreatingUser") Cancel
+.ui.form(v-if="isCreatingUser")
+  .ui.field
+    .field
+      label Username
+      input(id="username", v-model="userModel.username")
+  .ui.segment
+    .field
+      .ui.toggle.checkbox
+        input(id="isAdmin", type="checkbox", v-model="userModel.isAdmin")
+        label Make this user an Administrator?
+  .ui.primary.button(@click="createUser") Submit
+  .ui.red.button(@click="finishCreatingUser") Cancel
 
-  div(v-else) 
-    .ui.segment
-      //- todo: improve this...
-      p Username: {{ createdUser.username }}
-      p Password: {{ createdUser.password }}
-      p Administrator: {{ createdUser.isAdmin }}
+div(v-else-if="hasCreatedUser")
+  .ui.segment
+    p Username: {{ createdUser.username }}
+    p Password: {{ createdUser.password }}
+    p Administrator: {{ createdUser.isAdmin }}
 
-    .ui.primary.button(@click="finishCreatingUser") Done
+  .ui.primary.button(@click="finishCreatingUser") Done
     
 div(v-else)
   h2.ui.header Users

@@ -12,8 +12,8 @@ export default {
     return {
       usernames: [],
       admins: [],
-      creatingUser: false,
-      inputtingUser: false,
+      isCreatingUser: false,
+      hasCreatedUser: false,
       userModel: {
         username: '',
         isAdmin: false,
@@ -34,18 +34,19 @@ export default {
     },
 
     beginCreatingUser() {
-      this.creatingUser = true;
-      this.inputtingUser = true;
+      this.isCreatingUser = true;
     },
 
     async createUser() {
       try {
         const res = await axios.post('/api/admin/create-user', this.userModel);
         this.createdUser = res.data;
-        this.inputtingUser = false;
         this.getUsers();
+
+        this.hasCreatedUser = true;
+        this.isCreatingUser = false;
       } catch (e) {
-        toastr.error('Unable to create user');
+        toastr.error(e.response.data.msg);
       }
     },
 
@@ -55,8 +56,9 @@ export default {
         isAdmin: false,
       };
 
-      this.creatingUser = false;
-      this.inputtingUser = false;
+      this.isCreatingUser = false;
+      this.hasCreatedUser = false;
+      this.getUsers();
     },
   },
 

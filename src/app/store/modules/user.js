@@ -5,7 +5,7 @@ const getters = {
   },
 
   loggedIn(state) {
-    return state.user.username !== '';
+    return state.user.username != null && state.user.username !== '';
   },
 
   isAdmin(state) {

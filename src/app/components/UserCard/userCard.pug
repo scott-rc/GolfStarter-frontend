@@ -1,5 +1,4 @@
-.ui.compact.clearing.segment 
-  //- todo: improve this...
-  i.big.user.icon
-  span {{ username }}
-  .ui.right.floated.red.button(@click="deleteUser") Delete
+.ui.compact.clearing.segment(style="min-width: 200px")
+  i.big.user.icon 
+  strong {{ username }}
+  .ui.right.floated.tiny.red.button(@click="deleteUser") Delete
