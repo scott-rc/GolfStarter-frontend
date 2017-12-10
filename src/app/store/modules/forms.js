@@ -1,3 +1,5 @@
+import isValidForm from '../../util/form';
+
 /* eslint-disable no-param-reassign */
 const getters = {
   Forms(state) {
@@ -14,16 +16,13 @@ const mutations = {
     state.forms.find(form => form._id === id).active = false;
   },
 
-  updateComment(state, { id, value }) {
-    state.forms.find(form => form._id === id).comment = value;
-  },
+  updateForm(state, { formId, key, value }) {
+    const f = state.forms.find(form => form._id === formId);
+    f[key] = value;
 
-  updateTime(state, { formId, timeKey, value }) {
-    state.forms.find(form => form._id === formId)[timeKey] = value;
-  },
-
-  updateCheckHole(state, { id, key, value }) {
-    state.forms.find(form => form._id === id)[key] = value;
+    if (isValidForm(f)) {
+      state.forms.find(form => form._id === formId)[key] = value;
+    }
   },
 
   deleteForm(state, formId) {

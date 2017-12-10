@@ -6,7 +6,7 @@
     .column Cart Number: {{ form.cartNumber }}
   .content
     .ui.divider
-    .ui.basic.segment.container
+    .ui.basic.clearing.segment.container
       .ui.form
         .ui.field
           timePicker(label="Start Time", timeKey="startTime", :formId="formId", :isArchive="isArchive")
@@ -22,7 +22,7 @@
           timePicker(label="End Time", timeKey="endTime", :formId="formId", :isArchive="isArchive")
         .ui.field
           label Comments
-          textarea(v-model="comment")
+          textarea(v-model="comment", maxlength="2000")
         .ui.primary.button(@click="updateForm") Update
         .ui.button(v-if="isComplete && !isArchive", @click="archiveForm") Archive
-        .ui.red.button(@click="deleteForm") Delete
+        .ui.right.floated.red.button(@click="deleteForm") Delete

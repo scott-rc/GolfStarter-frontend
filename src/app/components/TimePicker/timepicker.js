@@ -23,15 +23,17 @@ export default {
       forceRoundTime: true,
       timeFormat: 'h:i A',
       scrollDefault: 'now',
-      step: 5,
+      minTime: '8:00am',
+      maxTime: '8:00pm',
+      step: 15,
     });
 
     $timepicker.change(() => {
       const value = $timepicker.timepicker('getTime');
 
-      this.$store.commit('updateTime', {
+      this.$store.commit('updateForm', {
         formId: this.formId,
-        timeKey: this.timeKey,
+        key: this.timeKey,
         value,
       });
     });

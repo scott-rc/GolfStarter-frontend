@@ -1,6 +1,7 @@
 import { mapState } from 'vuex';
 import TimePicker from '../TimePicker/TimePicker.vue';
 import Check from '../Check/Check.vue';
+import isValidForm from '../../util/form';
 
 const axios = require('axios');
 
@@ -21,8 +22,9 @@ export default {
         return this.form.comment;
       },
       set(value) {
-        this.$store.commit('updateComment', {
-          id: this.form._id,
+        this.$store.commit('updateForm', {
+          id: this.formId,
+          key: 'comment',
           value,
         });
       },
@@ -37,6 +39,10 @@ export default {
   methods: {
     async updateForm() {
       try {
+        if (!isValidForm(this.form, 'Update Failed')) {
+          return;
+        }
+
         await axios.put('/api/starter-form', this.form);
         toastr.success('Update Successful!');
       } catch (e) {
@@ -46,6 +52,10 @@ export default {
 
     async deleteForm() {
       try {
+        if (!confirm('Are you sure you want to delete this form?')) {
+          return;
+        }
+
         await axios.patch('/api/starter-form', { id: this.formId });
         this.$store.commit('deleteForm', this.formId);
         toastr.success('Deleted');
@@ -55,16 +65,21 @@ export default {
     },
 
     async archiveForm() {
+      if (!confirm('Are you sure you want to archive this form?')) {
+        return;
+      }
+
       this.$store.commit('archiveForm', this.formId);
       this.updateForm();
     },
   },
 
-  props: ['formId', 'isArchive'],
 
   mounted() {
     $('.dropdown').dropdown();
     $('.ui.accordion').accordion();
     this.model = $.extend({}, this.model, this.form);
   },
+
+  props: ['formId', 'isArchive'],
 };

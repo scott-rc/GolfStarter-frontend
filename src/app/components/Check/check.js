@@ -17,8 +17,8 @@ export default {
         return this.$store.getters.Forms.find(form => form._id === this.formId)[this.holeKey];
       },
       set(value) {
-        this.$store.commit('updateCheckHole', {
-          id: this.formId,
+        this.$store.commit('updateForm', {
+          formId: this.formId,
           key: this.holeKey,
           value,
         });
