@@ -65,4 +65,20 @@ export default {
   mounted() {
     this.getUsers();
   },
+
+  updated() {
+    const $form = $('.ui.form');
+
+    if ($form == null) {
+      return;
+    }
+
+    $form.form({
+      on: 'blur',
+      inline: true,
+      fields: {
+        username: 'empty',
+      },
+    });
+  },
 };

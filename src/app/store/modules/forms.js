@@ -17,11 +17,11 @@ const mutations = {
   },
 
   updateForm(state, { formId, key, value }) {
-    const f = state.forms.find(form => form._id === formId);
-    f[key] = value;
+    const form = state.forms.find(f => f._id === formId);
+    form[key] = value;
 
-    if (isValidForm(f)) {
-      state.forms.find(form => form._id === formId)[key] = value;
+    if (isValidForm(form)) {
+      state.forms.find(f => f._id === formId)[key] = value;
     }
   },
 

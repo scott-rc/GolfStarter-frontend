@@ -23,7 +23,7 @@ export default {
       },
       set(value) {
         this.$store.commit('updateForm', {
-          id: this.formId,
+          formId: this.formId,
           key: 'comment',
           value,
         });

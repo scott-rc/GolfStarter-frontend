@@ -4,9 +4,9 @@ div
     .ui.field
       .field
         label Password
-        input(name="password", type="password" v-model="model.password")
+        input(id="currentPassword", type="password" v-model="model.password")
     .ui.field
       .field
         label New Password
-        input(name="password", type="password", v-model="model.newPassword")
+        input(id="newPassword", type="password", v-model="model.newPassword")
     .ui.primary.submit.button(@click="changePassword") Submit

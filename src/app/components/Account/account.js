@@ -23,4 +23,15 @@ export default {
       }
     },
   },
+
+  mounted() {
+    $('.ui.form').form({
+      on: 'blur',
+      inline: true,
+      fields: {
+        currentPassword: ['empty', 'minLength[8]'],
+        newPassword: ['empty', 'minLength[8]'],
+      },
+    });
+  },
 };

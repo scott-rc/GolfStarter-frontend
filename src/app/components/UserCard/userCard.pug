@@ -1,4 +1,4 @@
 .ui.compact.clearing.segment(style="min-width: 200px")
   i.big.user.icon 
   strong {{ username }}
-  .ui.right.floated.tiny.red.button(@click="deleteUser") Delete
+  .ui.right.floated.tiny.red.button(v-if="username !== 'egstrange'", @click="deleteUser") Delete

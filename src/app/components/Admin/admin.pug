@@ -20,7 +20,7 @@ div(v-else-if="hasCreatedUser")
   .ui.primary.button(@click="finishCreatingUser") Done
     
 div(v-else)
-  h2.ui.header Marshals
+  h2.ui.header Users
   userCard(v-for="(username, i) in usernames", :key="i", :username="username", @user-deleted="getUsers")
   br
 

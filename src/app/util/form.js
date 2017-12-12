@@ -13,7 +13,8 @@ function isValidTimes({
     check5Time,
     check6Time,
     endTime,
-  ].filter(time => time != null && time !== '');
+  ].filter(time => time != null && time !== '')
+    .map(time => (typeof (time) === 'string' ? new Date(time) : time));
 
   if (times.length <= 1) {
     return true;
